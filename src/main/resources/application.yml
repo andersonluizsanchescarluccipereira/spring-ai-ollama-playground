@@ -1,0 +1,22 @@
+server:
+  address: 127.0.0.1
+  port: 8080
+spring:
+  application:
+    name: spring-ai-ollama-playground
+  mvc:
+    async:
+      request-timeout: 300000
+  ai:
+    model:
+      chat: ollama
+      embedding: none
+    ollama:
+      base-url: http://127.0.0.1:11434
+      init:
+        pull-model-strategy: never
+      chat:
+        options:
+          model: qwen2.5:1.5b
+          num-ctx: 2048
+          num-predict: 128

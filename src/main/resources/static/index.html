@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Spring AI Playground</title><link rel="stylesheet" href="style.css"><script src="app.js" defer></script></head>
+<body><main>
+<header><small>LABORATÓRIO DE IA LOCAL · JAVA 21</small><h1>Spring AI Playground</h1><p>Experimente os parâmetros de inferência do Qwen 2.5 1.5B.</p><a href="/swagger-ui/index.html" target="_blank" rel="noopener">Swagger / API</a></header>
+<form id="chat-form">
+<section class="grid">
+<label>Temperature <output id="temperature-value">1.0</output><input id="temperature" type="range" min="0" max="2" step="0.1" value="1"><small>Baixa: mais previsível. Alta: mais variada.</small></label>
+<label>Top K<input id="topK" type="number" min="1" max="100" value="3" required><small>Restringe os próximos tokens candidatos.</small></label>
+<label>Top P <output id="topP-value">0.90</output><input id="topP" type="range" min="0.01" max="1" step="0.01" value="0.9"><small>Filtra candidatos pela probabilidade acumulada.</small></label>
+<label>Max Tokens<input id="maxTokens" type="number" min="1" max="512" value="128" required><small>Limite de tokens gerados.</small></label>
+<label>Seed<input id="seed" type="number" min="-1" max="2147483647" value="-1" required><small>-1: aleatória. 42: experimento reproduzível.</small></label>
+<label class="check"><input type="checkbox" id="stream" checked> Exibir resposta em streaming (SSE)</label>
+</section>
+<label>System Prompt<textarea id="systemPrompt" rows="2" maxlength="1000">Responda em português do Brasil, de forma objetiva.</textarea></label>
+<label>Converse com a IA<textarea id="prompt" rows="4" maxlength="3000" required>Complete a frase "O céu é" com apenas uma palavra.</textarea></label>
+<div class="buttons"><button id="send" type="submit">Enviar</button><button id="stop" type="button" disabled>Parar</button></div>
+</form>
+<section class="result"><h2>Resposta do modelo</h2><p id="status" role="status">Aguardando solicitação.</p><pre id="answer" aria-label="Resposta"></pre><div id="metrics"></div></section>
+<footer>Spring Boot · Spring AI · Ollama | Execução local, sem histórico entre requisições.</footer>
+</main></body></html>
